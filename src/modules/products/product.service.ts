@@ -45,13 +45,7 @@ const updateBookInfoFromDB = async (id: string, updateData: object) => {
 const deleteBookInfoFromDB = async (id: string) => {
   try {
     // Find the document by ID and update it
-    const result = await ProductModel.findByIdAndUpdate(
-      id,
-      {
-        $set: updateData,
-      },
-      { new: true } // Return the updated document
-    );
+    const result = await ProductModel.deleteOne({ _id: id });
 
     if (result) {
       return result;

@@ -85,7 +85,7 @@ const getSpecificBook = async (req: Request, res: Response) => {
     } else {
       res.status(200).json({
         success: false,
-        message: "Book retrieved faild",
+        message: "Book Not Found",
         data: [],
       });
     }
@@ -156,8 +156,7 @@ const deleteBookInfo = async (req: Request, res: Response) => {
     } else {
       res.status(200).json({
         success: false,
-        message: "Book Deleted faild",
-        data: [],
+        message: "Book Not Found",
       });
     }
   } catch (error) {
