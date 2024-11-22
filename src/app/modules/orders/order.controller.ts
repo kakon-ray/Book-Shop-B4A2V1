@@ -48,7 +48,7 @@ const createOrder = async (req: Request, res: Response) => {
 const calcualteOrderRevenue = async (req: Request, res: Response) => {
   try {
     const result = await OrderServices.calculateOrderIntoDB();
-    console.log(result);
+
     res.status(200).json({
       success: true,
       message: "Revenue calculated successfully",
