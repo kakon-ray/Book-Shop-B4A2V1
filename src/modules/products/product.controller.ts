@@ -21,7 +21,7 @@ const createProduct = async (req: Request, res: Response) => {
       message: "Book created successfully",
       data: result,
     });
-  } catch (error: any) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       // readble message show
       error.issues.forEach((issue) => {

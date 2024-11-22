@@ -38,6 +38,8 @@ Create a .env file in the root of your project. This file will hold your environ
 
 npm install cors
 
+13. Setup eslint
+
 \*\*\* Then I work automatically convert TypeScript to JavaScript on file save and restart the server
 
 1. Install Required Packages
