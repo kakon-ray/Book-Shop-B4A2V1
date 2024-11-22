@@ -48,16 +48,12 @@ const createOrder = async (req: Request, res: Response) => {
 const calcualteOrderRevenue = async (req: Request, res: Response) => {
   try {
     const result = await OrderServices.calculateOrderIntoDB();
-    let totalRevenue = 0;
-    result.forEach((element) => {
-      totalRevenue = totalRevenue + element.totalPrice * element.quantity;
-    });
-
+    console.log(result);
     res.status(200).json({
       success: true,
       message: "Revenue calculated successfully",
       data: {
-        totalRevenue: totalRevenue,
+        totalRevenue: result,
       },
     });
   } catch (error) {

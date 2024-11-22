@@ -38,11 +38,29 @@ const createOrderIntoDB = async (order: TOrder) => {
 };
 
 const calculateOrderIntoDB = async () => {
-  const result = await OrderModel.find(
-    {},
-    { totalPrice: 1, quantity: 1, _id: 0 }
-  );
-  return result;
+  const result = await OrderModel.aggregate([
+    {
+      $group: {
+        _id: null, // calculate all orders
+        totalRevenue: {
+          $sum: {
+            $multiply: ["$totalPrice", "$quantity"], // Multiply totalPrice and quantity
+          },
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        totalRevenue: 1,
+      },
+    },
+  ]);
+
+  // If no orders are found, set totalRevenue to 0
+  const totalRevenue = result.length > 0 ? result[0].totalRevenue : 0;
+
+  return totalRevenue;
 };
 
 export const OrderServices = {
