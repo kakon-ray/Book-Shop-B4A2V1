@@ -55,7 +55,7 @@ const calcualteOrderRevenue = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "Order created successfully",
+      message: "Revenue calculated successfully",
       data: {
         totalRevenue: totalRevenue,
       },
